@@ -45,3 +45,11 @@ jobs:
             - name: Cat Docker file 
               run:  |
                 cat ./Dockerfile
+
+            - name: jf docker build
+              run:  |
+                 jf docker build -t hts2.jfrog.io/docker-cli-oidc/test-image:v1 --push --build-name=docker-test-build --build-number=1 .
+
+            - name: jf bp 
+              run:  |                
+                 jf rt bp docker-test-build 1
