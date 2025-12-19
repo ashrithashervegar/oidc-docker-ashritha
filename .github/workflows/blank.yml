@@ -14,6 +14,7 @@ jobs:
               env:
                   JF_URL: https://hts2.jfrog.io 
               with:
+                  verion: latest
                   oidc-provider-name: ashritha 
                   oidc-audience: jfrog-github
             - name: list token
@@ -45,6 +46,8 @@ jobs:
                 cat ./Dockerfile
 
             - name: jf docker build
+              env: 
+                   JFROG_RUN_NATIVE: true
               run:  |
                  jf docker build -t hts2.jfrog.io/docker-cli-oidc/test-image:v1 --push --build-name=docker-test-build --build-number=1 .
 
