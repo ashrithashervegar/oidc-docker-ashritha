@@ -41,3 +41,7 @@ jobs:
 
                 CMD ["echo", "Hello from Debian-based Nginx!"]
                 EOF
+
+            - name: Cat Docker file 
+              run:  |
+                cat ./Dockerfile
