@@ -24,6 +24,10 @@ jobs:
               run: |
                      RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X POST -H "Content-type: application/json" https://hts2.jfrog.io/access/api/v1/oidc/token -d \ "{\"grant_type\": \"urn:ietf:params:oauth:grant-type:token-exchange\",\"subject_token_type\":\"urn:ietf:params:oauth:token-type:id_token\",\"subject_token\": \"${{ env.ID_TOKEN }}\",\"provider_name\": \"${{ env.OIDC_PROVIDER }}\"}") echo "API Response:" echo "$RESPONSE"
             # Fetch file using the OIDC generated token
+            - name: Ping Artifactory
+              run: |
+                jf rt ping
+                
             - name: Create Dockerfile
               run: |
                 cat <<'EOF' > Dockerfile
