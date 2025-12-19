@@ -14,7 +14,7 @@ jobs:
               env:
                   JF_URL: https://hts2.jfrog.io 
               with:
-                  verion: 2.87.0
+                  version: 2.87.0
                   oidc-provider-name: ashritha 
                   oidc-audience: jfrog-github
             - name: list token
